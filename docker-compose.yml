@@ -12,7 +12,7 @@ services:
 
   server:
     build:
-      context: .
+      context: ./server
     environment:
       DB_SCHEMA: postgres
       DB_USER: postgres

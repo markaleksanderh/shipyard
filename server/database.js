@@ -10,6 +10,8 @@ const sequelize = new Sequelize(process.env.DB_SCHEMA || 'postgres',
                                         ssl: process.env.DB_SSL == "true"
                                     }
                                 });
+
+                                
 const Note = sequelize.define('Note', {
     title: {
         type: Sequelize.STRING,
@@ -20,7 +22,33 @@ const Note = sequelize.define('Note', {
         allowNull: true
     },
 });
+
+const Project = sequelize.define('Project', {
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    description: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    client: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    start_date: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    end_date: {
+        type: Sequelize.DATE,
+        allowNull: true
+    }
+});
+
+
 module.exports = {
     sequelize: sequelize,
-    Note: Note
+    Note: Note,
+    Project: Project
 };
