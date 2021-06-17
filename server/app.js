@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/notes', notesRouter);
 app.use('/projects', projectsRouter);
+app.set('port', process.env.PORT || 8080);
 // app.use('/users', usersRouter);
 
 module.exports = app;
