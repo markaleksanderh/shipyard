@@ -35,7 +35,6 @@ const Project = sequelize.define('Project', {
     }
 });
 
-
 const Note = sequelize.define('Note', {
     title: {
         type: Sequelize.STRING,
@@ -47,12 +46,23 @@ const Note = sequelize.define('Note', {
     },
 });
 
+const Client = sequelize.define('Client', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+})
+
+// Relations
 // Project.hasMany(Note);
 // Note.belongsTo(Project);
+// Client.hasMany(Project);
+// Project.belongsTo(Client);
 
 
 module.exports = {
     sequelize: sequelize,
     Note: Note,
-    Project: Project
+    Project: Project,
+    Client: Client
 };
