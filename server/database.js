@@ -11,17 +11,6 @@ const sequelize = new Sequelize(process.env.DB_SCHEMA || 'postgres',
                                     }
                                 });
 
-                                
-const Note = sequelize.define('Note', {
-    title: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    description: {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-});
 
 const Project = sequelize.define('Project', {
     title: {
@@ -38,13 +27,28 @@ const Project = sequelize.define('Project', {
     },
     start_date: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     end_date: {
         type: Sequelize.DATE,
         allowNull: true
     }
 });
+
+
+const Note = sequelize.define('Note', {
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    description: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+});
+
+// Project.hasMany(Note);
+// Note.belongsTo(Project);
 
 
 module.exports = {
