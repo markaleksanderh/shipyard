@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import axios from 'axios';
 
-export default class NoteList extends React.Component {
+export default class NoteList extends Component {
   state = {
     notes: []
   }
