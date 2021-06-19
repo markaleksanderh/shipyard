@@ -1,16 +1,25 @@
 var express = require('express');
 var cors = require('cors')
-var path = require('path');
+// var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+const db = require("./models");
+db.sequelize.sync({ force: true }).then(() => {
+  console.log("Drop and re-sync db.");
+});
+
+
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
-var projectsRouter = require('./routes/projects');
-var notesRouter = require('./routes/notes');
-var clientsRouter = require('./routes/clients')
+// var projectsRouter = require('./routes/projects');
+var notesRouter = require('./routes/note.routes');
+// var clientsRouter = require('./routes/clients')
 
 var app = express();
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -31,11 +40,11 @@ app.use(cors(), function(req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/notes', notesRouter);
-app.use('/projects', projectsRouter);
-app.use('/clients', clientsRouter);
-app.set('port', process.env.PORT || 8080);
+// app.use('/projects', projectsRouter);
+// app.use('/clients', clientsRouter);
+// app.set('port', process.env.PORT || 8080);
 // app.use('/users', usersRouter);
 
-
+// require("./app/routes/note.routes")(app);
 
 module.exports = app;
