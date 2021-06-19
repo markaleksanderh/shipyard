@@ -12,7 +12,8 @@ To build
 `docker-compose up --build`
 
 
-Example curl request
-`curl -X PUT -d 'title=curl' localhost:8080/notes `
+Example curl requests
 
-`curl -X POST -d 'title=curl' localhost:8080/notes `
+`curl -X POST -d 'title=new note' localhost:8080/notes`
+`curl -X POST -d 'name=new company' localhost:8080/companies`
+`curl -X POST -d 'title=new project' localhost:8080/projects`

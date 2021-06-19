@@ -11,6 +11,7 @@ db.sequelize.sync({ force: true }).then(() => {
 var indexRouter = require('./routes/index');
 var noteRouter = require('./routes/note.routes');
 var companyRouter = require('./routes/company.routes')
+var projectRouter = require('./routes/project.routes')
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(cors(), function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/notes', noteRouter);
 app.use('/companies', companyRouter)
+app.use('/projects', projectRouter)
 
 
 module.exports = app;
