@@ -14,3 +14,5 @@ To build
 
 Example curl request
 `curl -X PUT -d 'title=curl' localhost:8080/notes `
+
+`curl -X POST -d 'title=curl' localhost:8080/notes `

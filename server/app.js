@@ -45,6 +45,6 @@ app.use('/notes', notesRouter);
 // app.set('port', process.env.PORT || 8080);
 // app.use('/users', usersRouter);
 
-// require("./app/routes/note.routes")(app);
+
 
 module.exports = app;
