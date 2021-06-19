@@ -1,2 +1,2 @@
-var db = require('../database.js');
+var db = require('./models');
 db.sequelize.sync();
