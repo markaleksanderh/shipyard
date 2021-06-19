@@ -14,8 +14,8 @@ db.sequelize.sync({ force: true }).then(() => {
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 // var projectsRouter = require('./routes/projects');
-var notesRouter = require('./routes/note.routes');
-// var clientsRouter = require('./routes/clients')
+var noteRouter = require('./routes/note.routes');
+var companyRouter = require('./routes/company.routes')
 
 var app = express();
 
@@ -39,7 +39,8 @@ app.use(cors(), function(req, res, next) {
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/notes', notesRouter);
+app.use('/notes', noteRouter);
+app.use('/companies', companyRouter)
 // app.use('/projects', projectsRouter);
 // app.use('/clients', clientsRouter);
 // app.set('port', process.env.PORT || 8080);

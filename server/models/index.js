@@ -35,6 +35,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.note = require("./note.model.js")(sequelize, Sequelize);
+db.company = require("./company.model.js")(sequelize, Sequelize)
 // Add projects, clients
 
 module.exports = db;
