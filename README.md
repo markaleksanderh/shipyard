@@ -10,3 +10,7 @@ Run `npm run migrate`
 
 To build
 `docker-compose up --build`
+
+
+Example curl request
+`curl -X PUT -d 'title=curl' localhost:8080/notes `

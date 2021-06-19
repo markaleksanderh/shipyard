@@ -22,11 +22,10 @@ router.get("/:id", function(req, res) {
         });
 });
 
-router.put("/", function(req, res) {
+router.post("/", function(req, res) {
     db.Project.create({
         title: req.body.title,
         description: req.body.description,
-        client: req.body.client,
         start_date: req.body.start_date,
         end_date: req.body.end_date,
         })

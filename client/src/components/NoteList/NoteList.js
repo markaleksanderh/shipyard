@@ -18,7 +18,7 @@ export default class NoteList extends Component {
   render() {
     return (
       <ul>
-        { this.state.notes.map(note => <li key={note.id}>{note.description} - {note.createdAt}</li>)}
+        { this.state.notes.map(note => <li key={note.id}>{note.title} - {note.createdAt}</li>)}
       </ul>
     )
   }

@@ -21,10 +21,6 @@ const Project = sequelize.define('Project', {
         type: Sequelize.STRING,
         allowNull: true
     },
-    client: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
     start_date: {
         type: Sequelize.DATE,
         allowNull: true

@@ -22,7 +22,7 @@ router.get("/:id", function(req, res) {
         });
 });
 
-router.put("/", function(req, res) {
+router.post("/", function(req, res) {
     db.Note.create({
         title: req.body.title,
         description: req.body.description,
