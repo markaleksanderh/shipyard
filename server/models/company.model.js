@@ -4,6 +4,9 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
+    },
+    {
+        underscored: true
     });
     return Company;
 }

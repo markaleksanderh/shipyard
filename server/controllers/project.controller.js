@@ -15,7 +15,8 @@ exports.create = (req, res) => {
         title: req.body.title,
         description: req.body.description,
         start_date: req.body.start_date,
-        end_date: req.body.end_date
+        end_date: req.body.end_date,
+        company_id: req.body.company_id
     }
     Project.create(project)
         .then(data => {

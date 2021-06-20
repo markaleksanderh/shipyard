@@ -38,10 +38,20 @@ db.note = require("./note.model.js")(sequelize, Sequelize);
 db.company = require("./company.model.js")(sequelize, Sequelize)
 db.project = require("./project.model.js")(sequelize, Sequelize)
 
+db.company.hasMany(db.project, { as: "projects"})
+db.project.belongsTo(db.company, {
+  foreignKey: "company_id",
+  as: "company"
+})
+
 db.project.hasMany(db.note, { as: "notes" });
 db.note.belongsTo(db.project, {
-  foreignKey: "projectId",
-  as: "project",
+  foreignKey: {
+    name: "project_id",
+    allowNull: false
+  }
+  // foreignKey: "project_id",
+  // as: "project"
 });
 
 module.exports = db;
