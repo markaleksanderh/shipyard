@@ -16,6 +16,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE,
             allowNull: true
         }
+
+    },
+    {
+        underscored: true
     });
+
     return Project;
 }

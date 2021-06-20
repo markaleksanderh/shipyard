@@ -1,4 +1,5 @@
 const { restart } = require("pm2");
+const { note } = require("../models");
 const db = require("../models");
 const Project = db.project;
 const Op = db.Sequelize.Op;
@@ -27,8 +28,14 @@ exports.create = (req, res) => {
         })
 };
 
+
 exports.findAll = (req, res) => {
-    Project.findAll()
+    Project.findAll({
+        include: [{
+            model: note,
+            as: 'notes'
+        }]
+    })
         .then(data => {
             res.send(data)
         })

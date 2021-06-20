@@ -12,7 +12,8 @@ exports.create = (req, res) => {
     }
     const note = {
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        projectId: req.body.projectId
     }
     Note.create(note)
         .then(data => {
