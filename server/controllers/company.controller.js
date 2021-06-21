@@ -16,6 +16,7 @@ exports.create = (req, res) => {
     }
     Company.create(company)
         .then(data => {
+            console.log(data)
             res.send(data);
         })
         .catch(err => {

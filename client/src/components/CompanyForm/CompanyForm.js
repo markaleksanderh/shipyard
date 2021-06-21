@@ -17,10 +17,12 @@ export default class CompanyForm extends Component {
     handleSubmit(event) {
       event.preventDefault();
       const company = {
-        company: this.state.name
+        name: this.state.value
       }
+      console.log(company)
       axios.post('http://localhost:8080/companies', { company })
         .then(res=> {
+          console.log(company)
           console.log(res);
           console.log(res.data);
           window.location = "/retrieve"
@@ -28,6 +30,7 @@ export default class CompanyForm extends Component {
         .catch(error => {
             console.log(error)
         })
+        console.log(company)
     }
   
     render() {
