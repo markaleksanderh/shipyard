@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
     dialect: 'postgres',
     dialectOptions: {
       ssl: process.env.DB_SSL == "true"
-    }
+    },
   }
   // dbConfig.DB,
   // dbConfig.USER,
@@ -40,18 +40,16 @@ db.project = require("./project.model.js")(sequelize, Sequelize)
 
 db.company.hasMany(db.project, { as: "projects"})
 db.project.belongsTo(db.company, {
-  foreignKey: "company_id",
+  foreignKey: "id",
   as: "company"
 })
 
 db.project.hasMany(db.note, { as: "notes" });
 db.note.belongsTo(db.project, {
   foreignKey: {
-    name: "project_id",
+    name: "id",
     allowNull: false
   }
-  // foreignKey: "project_id",
-  // as: "project"
 });
 
 module.exports = db;

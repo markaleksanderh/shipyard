@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Project = sequelize.define('Project', {
+    const Project = sequelize.define('project', {
         title: {
             type: Sequelize.STRING,
             allowNull: false
@@ -8,19 +8,15 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: true
         },
-        start_date: {
+        startDate: {
             type: Sequelize.DATE,
             allowNull: true
         },
-        end_date: {
+        endDate: {
             type: Sequelize.DATE,
             allowNull: true
         }
 
-    },
-    {
-        underscored: true
     });
-
     return Project;
 }

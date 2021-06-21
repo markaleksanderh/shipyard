@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
     if (!req.body.name) {
-        restart.status(400).send({
+        res.status(400).send({
             message: "Name field cannot be Null"
         });
         return;

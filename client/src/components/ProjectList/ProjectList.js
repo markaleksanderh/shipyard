@@ -8,7 +8,7 @@ export default class ProjectList extends Component {
   }
 
   componentDidMount() {
-    axios.get(`localhost:8080/projects/all`)
+    axios.get(`localhost:8080/projects`)
       .then(res => {
         const projects = res.data;
         this.setState({ projects });
@@ -18,7 +18,7 @@ export default class ProjectList extends Component {
   render() {
     return (
       <ul>
-        { this.state.projects.map(project => <li>{project.title}</li>)}
+        { this.state.projects.map(project => <li key={project.id}>{project.title}</li>)}
       </ul>
     )
   }

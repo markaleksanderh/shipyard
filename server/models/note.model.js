@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Note = sequelize.define('Note', {
+    const Note = sequelize.define('note', {
         title: {
             type: Sequelize.STRING,
             allowNull: false
@@ -8,10 +8,6 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: true
         }
-    },
-    {
-        underscored: true
     });
-
     return Note;
 }

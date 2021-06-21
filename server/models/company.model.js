@@ -1,12 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
-    const Company = sequelize.define('Company', {
+    const Company = sequelize.define('company', {
         name: {
             type: Sequelize.STRING,
             allowNull: false
         },
-    },
-    {
-        underscored: true
     });
     return Company;
 }

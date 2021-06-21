@@ -8,7 +8,7 @@ export default class NoteList extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8080/notes/all`)
+    axios.get(`http://localhost:8080/notes`)
       .then(res => {
         const notes = res.data;
         this.setState({ notes });
