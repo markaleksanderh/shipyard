@@ -40,14 +40,16 @@ db.project = require("./project.model.js")(sequelize, Sequelize)
 
 db.company.hasMany(db.project, { as: "projects"})
 db.project.belongsTo(db.company, {
-  foreignKey: "id",
-  as: "company"
+  // foreignKey: "companyId",
+  as: "company",
+  allowNull: false
 })
 
 db.project.hasMany(db.note, { as: "notes" });
 db.note.belongsTo(db.project, {
   foreignKey: {
-    name: "id",
+    // foreignKey: "projectId",
+    as: "note",
     allowNull: false
   }
 });

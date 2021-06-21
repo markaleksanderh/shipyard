@@ -8,12 +8,10 @@ db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
-var indexRouter = require('./routes/index');
-var noteRouter = require('./routes/note.routes');
-var companyRouter = require('./routes/company.routes')
-var projectRouter = require('./routes/project.routes')
+
 
 var app = express();
+app.use(cors())
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,7 +19,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.use(cors())
+var indexRouter = require('./routes/index');
+var noteRouter = require('./routes/note.routes');
+var companyRouter = require('./routes/company.routes')
+var projectRouter = require('./routes/project.routes')
 
 app.use('/', indexRouter);
 app.use('/notes', noteRouter);
