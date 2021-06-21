@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import axios from "axios";
 
-import axios from 'axios';
 
 export default class CompanyForm extends Component {
     constructor(props) {

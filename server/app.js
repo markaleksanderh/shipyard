@@ -8,8 +8,6 @@ db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
-
-
 var app = express();
 app.use(cors())
 
@@ -23,6 +21,8 @@ var indexRouter = require('./routes/index');
 var noteRouter = require('./routes/note.routes');
 var companyRouter = require('./routes/company.routes')
 var projectRouter = require('./routes/project.routes')
+
+app.options('*', cors())
 
 app.use('/', indexRouter);
 app.use('/notes', noteRouter);

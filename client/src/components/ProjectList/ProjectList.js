@@ -8,7 +8,7 @@ export default class ProjectList extends Component {
   }
 
   componentDidMount() {
-    axios.get(`localhost:8080/projects`)
+    axios.get(`http://localhost:8080/projects`)
       .then(res => {
         const projects = res.data;
         this.setState({ projects });
