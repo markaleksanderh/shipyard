@@ -19,8 +19,8 @@ export default class CompanyForm extends Component {
       const company = {
         name: this.state.value
       }
-      console.log(company)
-      axios.post('http://localhost:8080/companies', { company })
+            
+      axios.post('http://localhost:8080/companies', company )
         .then(res=> {
           console.log(company)
           console.log(res);
@@ -30,13 +30,12 @@ export default class CompanyForm extends Component {
         .catch(error => {
             console.log(error)
         })
-        console.log(company)
     }
   
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <h6>Add new note</h6>
+          <h4>Add new note</h4>
           <label>
             Company name:
             <input type="text" name="name" value={this.state.value} onChange={this.handleChange} />
