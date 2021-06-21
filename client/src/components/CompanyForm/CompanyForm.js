@@ -19,13 +19,13 @@ export default class CompanyForm extends Component {
       const company = {
         name: this.state.value
       }
-            
+
       axios.post('http://localhost:8080/companies', company )
         .then(res=> {
           console.log(company)
           console.log(res);
           console.log(res.data);
-          window.location = "/retrieve"
+          // window.location = "/retrieve"
         })
         .catch(error => {
             console.log(error)

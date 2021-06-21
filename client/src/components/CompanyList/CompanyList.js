@@ -18,7 +18,7 @@ export default class CompanyList extends Component {
   render() {
     return (
       <ul>
-        { this.state.companies.map(company => <li key={company.id}>{company.name}</li>)}
+        { this.state.companies.map(company => <li key={company.id}><span>{company.id}</span> - {company.name}</li>)}
       </ul>
     )
   }
