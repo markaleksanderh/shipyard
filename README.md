@@ -31,3 +31,14 @@ Connect to db `\c`
 List tables in db `\dt`
 
 `quit` to quit psql, `exit` 
+
+
+
+### To do
+NGINX
+Auth0
+React Router
+Update & Delete
+Form components for projects and notes
+Seed DB
+Deploy pipeline

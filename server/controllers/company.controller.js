@@ -4,6 +4,14 @@ const db = require("../models");
 const Company = db.company;
 const Op = db.Sequelize.Op;
 
+
+// Create
+// Read One
+// Read All
+// Update
+// Delete One
+// Delete All
+
 exports.create = (req, res) => {
     if (!req.body.name) {
         res.status(400).send({
