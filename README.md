@@ -35,10 +35,10 @@ List tables in db `\dt`
 
 
 ### To do
-NGINX
-Auth0
-React Router
-Update & Delete
-Form components for projects and notes
-Seed DB
-Deploy pipeline
+
+- NGINX
+- React Router
+- Update & Delete
+- Form components for projects and notes
+- Seed DB
+- Deploy pipeline
