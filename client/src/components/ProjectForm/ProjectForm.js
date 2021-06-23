@@ -32,9 +32,10 @@ export default class ProjectForm extends Component {
       console.log('A project was submitted: ' + this.state.value);
       event.preventDefault();
       const project = {
-        project: this.state.title
+        title: this.state.title,
+
       }
-      axios.post('http://localhost:8080/projects', { project })
+      axios.post('http://localhost:8080/projects', project)
         .then(res=> {
           console.log(res);
           console.log(res.data);
@@ -49,6 +50,8 @@ export default class ProjectForm extends Component {
           <label>
             Project title:
             <input type="text" name="title" value={this.state.value} onChange={this.handleChange} />
+            {/* <input type="text" name="description" value={this.state.value} onChange={this.handleChange} /> */}
+            <input type="number" name="id" value={this.state.value} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
