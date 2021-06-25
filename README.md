@@ -42,3 +42,4 @@ List tables in db `\dt`
 - Form components for projects and notes
 - Seed DB
 - Deploy pipeline
+- Add validation
