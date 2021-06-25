@@ -33,7 +33,6 @@ List tables in db `\dt`
 `quit` to quit psql, `exit` 
 
 
-
 ### To do
 
 - NGINX
@@ -43,3 +42,5 @@ List tables in db `\dt`
 - Seed DB
 - Deploy pipeline
 - Add validation
+
+

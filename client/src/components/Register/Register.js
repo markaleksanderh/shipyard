@@ -3,51 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import AuthService from "../../services/auth.service";
 import Alert from 'react-bootstrap/Alert'
-import { isEmail } from "validator";
-// import {Form as VForm} from "react-validation/build/form";
-// import {Input as VInput} from "react-validation/build/input";
-// import {CheckButton as VCheckButton} from "react-validation/build/button";
 
-const required = value => {
-  if (!value) {
-    return (
-      <Alert variant='danger'>
-        This field is required.
-      </Alert>
-    )
-  }
-}
-
-const email = value => {
-  if (!isEmail(value)) {
-    return (
-      <Alert variant='danger'>
-        This is not a valid email.
-      </Alert>
-    )
-  }
-}
-
-const vusername = value => {
-  if (value.length <3 || value.length > 20) {
-    return(
-      <Alert variant='danger'>
-        The username must be between three and 20 characters.
-      </Alert>
-    )
-
-  }
-}
-
-const vpassword = value => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <Alert variant='danger'>
-        The password must be between six and 40 characters.
-      </Alert>
-    )
-  }
-}
 
 export default class Register extends Component {
   constructor(props) {
@@ -91,7 +47,6 @@ export default class Register extends Component {
       successful: false
     });
 
-    this.form.validateAll()
 
     AuthService.register(
       this.state.username,
@@ -155,22 +110,12 @@ export default class Register extends Component {
                 </Button>
               </div>
             )}
-
-            {this.state.message && (
-              <div className="form-group">
-                <div
-                  className={
-                    this.state.successful
-                      ? "alert alert-success"
-                      : "alert alert-danger"
-                  }
-                  role="alert"
-                >
-                  {this.state.message}
-                </div>
-              </div>
-            )}
-            {/* <CheckButton style={{ display: "none" }} ref={c => { this.checkBtn = c; }} /> */}
+            {this.state.message && 
+              (
+                this.state.successful ? <Alert variant='success'>this.state.message</Alert> : <Alert variant='danger'>this.state.message</Alert>
+              )
+            }
+            {/* <VCheckButton style={{ display: "none" }} ref={c => { this.checkBtn = c; }} /> */}
           </Form>
     );
   }
