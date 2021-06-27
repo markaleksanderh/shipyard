@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import AuthService from "../../services/auth.service";
 import Alert from 'react-bootstrap/Alert'
-import authService from "../../services/auth.service";
-
-
+import AuthService from "../../services/auth.service";
 
 export default class Register extends Component {
   constructor(props) {
@@ -68,7 +65,7 @@ export default class Register extends Component {
       return false
     }
     else {
-      authService.register(
+      AuthService.register(
         this.state.username,
         this.state.email,
         this.state.password
