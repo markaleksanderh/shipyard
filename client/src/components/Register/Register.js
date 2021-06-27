@@ -1,22 +1,23 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
-import AuthService from "../../services/auth.service";
+import AuthService from "../../services/auth.service"
 
 export default class Register extends Component {
   constructor(props) {
     super(props)
+    this.onChangeUsername = this.onChangeUsername.bind(this)
+    this.onChangeEmail = this.onChangeEmail.bind(this)
+    this.onChangePassword = this.onChangePassword.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
       username: '',
       email: '',
       password: '',
       errors: []
     }
-    this.onChangeUsername = this.onChangeUsername.bind(this)
-    this.onChangeEmail = this.onChangeEmail.bind(this)
-    this.onChangePassword = this.onChangePassword.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+
   }
 
   onChangeUsername(event) {

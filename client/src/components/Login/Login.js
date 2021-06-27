@@ -1,20 +1,19 @@
-import React, { Component } from "react";
-import AuthService from "../../services/auth.service";
-
+import React, { Component } from "react"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
+import AuthService from "../../services/auth.service"
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.state = {
-      username: "",
-      password: "",
-      loading: false,
-      message: ""
+      username: '',
+      password: '',
+      errors: []
     };
   }
 
@@ -30,45 +29,49 @@ export default class Login extends Component {
     });
   }
 
-  handleLogin(event) {
+  handleSubmit(event) {
     event.preventDefault();
+    var errors = []
+
+    if (this.state.username === '') {
+      errors.push('username')
+    }
+
+    if (this.state.password === '') {
+      errors.push('password')
+    }
+
     this.setState({
-      message: "",
-      loading: true
-    });
+      errors: errors
+    })
 
-    AuthService.login(this.state.username, this.state.password).then(
-      () => {
+    if (errors.length > 0) {
+      console.log(errors)
+      return false
+    }
+    else {
+      AuthService.login(
+        this.state.username,
+        this.state.password
+      ).then(
         this.props.history.push('/user')
-      },
-      error => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        this.setState({
-          loading: false,
-          message: resMessage
-        });
-      }
-    );
-
+      )
+    }
   }
 
   render() {
     return (
-    <Form onSubmit={this.handleLogin} ref={c => {this.form = c;}}>
-      <Form.Group controlId="formBasicUsername">
+    <Form onSubmit={this.handleSubmit}>
+      <Form.Group controlId="formUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control type="username" placeholder="Enter username"  name="username" value={this.state.username} onChange={this.onChangeUsername}/>
       </Form.Group>
-      <Form.Group controlId="formBasicPassword">
+      <Alert variant="danger" className={(this.state.errors.includes('username')) ? 'visible' : 'd-none'}>No username entered</Alert>
+      <Form.Group controlId="formPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password"  name="password" value={this.state.password} onChange={this.onChangePassword}/>
       </Form.Group>
+      <Alert variant="danger" className={(this.state.errors.includes('password')) ? 'visible' : 'd-none'}>No password entered</Alert>
       <Button variant="primary" type="submit">
         Submit
       </Button>
