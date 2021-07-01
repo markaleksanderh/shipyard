@@ -97,7 +97,7 @@ class Register extends Component {
   render() {
     const { message } = this.props
     return (
-      <div class="container">
+      <div>
         <h2>Create account</h2>
         <Form onSubmit={this.handleSubmit} ref={(c) => {this.form = c;}}>
           {!this.state.successful && (

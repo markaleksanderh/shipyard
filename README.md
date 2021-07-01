@@ -11,6 +11,9 @@ Run `npm run migrate`
 To build
 `docker-compose up --build`
 
+To delete all
+`docker system prune -a --volumes`
+
 
 Example curl requests
 
@@ -42,5 +45,6 @@ List tables in db `\dt`
 - Seed DB
 - Deploy pipeline
 - Add validation
+- Remove anonymous functions
 
 
