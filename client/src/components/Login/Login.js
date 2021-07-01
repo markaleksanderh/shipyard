@@ -2,9 +2,13 @@ import React, { Component } from "react"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
-import AuthService from "../../services/auth.service"
+import { Redirect } from 'react-router-dom';
 
-export default class Login extends Component {
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
+
+
+class Login extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,7 +17,8 @@ export default class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      errors: []
+      errors: [],
+      loading: false,
     };
   }
 
@@ -31,6 +36,11 @@ export default class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    this.setState({
+      loading: true,
+    })
+
     var errors = []
 
     if (this.state.username === '') {
@@ -45,23 +55,38 @@ export default class Login extends Component {
       errors: errors
     })
 
+    const { dispatch, history } = this.props
+
     if (errors.length > 0) {
-      console.log(errors)
+      this.setState({
+        loading: false
+      })
       return false
     }
     else {
-      AuthService.login(
-        this.state.username,
-        this.state.password
-      ).then(
-        this.props.history.push('/user')
-      )
+      dispatch(login(this.state.username, this.state.password))
+        .then(() => {
+          history.push("/profile");
+          window.location.reload();
+        })
+      .catch(() => {
+        this.setState({
+          loading: false
+        })
+      })
     }
   }
 
   render() {
+
+    const { isLoggedIn, message } = this.props;
+
+    if (isLoggedIn) {
+      return <Redirect to="/profile" />;
+    }
+
     return (
-    <Form onSubmit={this.handleSubmit}>
+    <Form onSubmit={this.handleSubmit} ref={(c) => {this.form = c;}}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control type="username" placeholder="Enter username"  name="username" value={this.state.username} onChange={this.onChangeUsername}/>
@@ -75,7 +100,22 @@ export default class Login extends Component {
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      {message && (
+        <Alert variant="danger">{message}</Alert>
+      )}
     </Form>
     )
   }
 }
+
+function mapStateToProps(state) {
+  const { isLoggedIn } = state.auth;
+  const { message } = state.message;
+  return {
+    isLoggedIn,
+    message
+  };
+}
+
+export default connect(mapStateToProps)(Login);
+

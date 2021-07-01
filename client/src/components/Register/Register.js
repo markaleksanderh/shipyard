@@ -144,6 +144,7 @@ class Register extends Component {
           {message && (
             <div>
               <Alert variant="danger">{message}</Alert>
+
             </div>
           )}
         </Form>
