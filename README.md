@@ -38,6 +38,7 @@ List tables in db `\dt`
 
 ### To do
 
+- Store auth.config secret and pg user & password in .env
 - NGINX
 - React Router
 - Update & Delete
