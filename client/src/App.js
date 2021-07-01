@@ -7,7 +7,7 @@ import { Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
-// import Profile from "./components/Profile/Profile";
+import Profile from "./components/Profile/Profile";
 // import BoardUser from "./components/BoardUser/BoardUser";
 // import BoardModerator from "./components/BoardModerator/BoardModerator";
 // import BoardAdmin from "./components/BoardAdmin/BoardAdmin";
@@ -126,8 +126,8 @@ class App extends Component {
               <Route exact path={["/", "/home"]} component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              {/* <Route exact path="/profile" component={Profile} />
-              <Route path="/user" component={BoardUser} />
+              <Route exact path="/profile" component={Profile} />
+              {/* <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} /> */}
             </Switch>

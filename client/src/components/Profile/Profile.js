@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import AuthService from "../../services/auth.service";
+import { Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
 
-export default class Profile extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentUser: AuthService.getCurrentUser()
-    };
-  }
+class Profile extends Component {
 
   render() {
-    const { currentUser } = this.state;
+    const { user: currentUser } = this.props;
+
+    if (!currentUser) {
+      return <Redirect to="/login" />;
+    }
 
     return (
       <div className="container">
@@ -21,17 +19,14 @@ export default class Profile extends Component {
           </h3>
         </header>
         <p>
-          <strong>Token:</strong>{" "}
-          {currentUser.accessToken.substring(0, 20)} ...{" "}
+          <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
           {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
         </p>
         <p>
-          <strong>Id:</strong>{" "}
-          {currentUser.id}
+          <strong>Id:</strong> {currentUser.id}
         </p>
         <p>
-          <strong>Email:</strong>{" "}
-          {currentUser.email}
+          <strong>Email:</strong> {currentUser.email}
         </p>
         <strong>Authorities:</strong>
         <ul>
@@ -42,3 +37,12 @@ export default class Profile extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  const { user } = state.auth;
+  return {
+    user,
+  };
+}
+
+export default connect(mapStateToProps)(Profile);
