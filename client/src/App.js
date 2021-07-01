@@ -2,15 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Router, Switch, Route, Link } from "react-router-dom";
 
-// import "bootstrap/dist/css/bootstrap.min.css";
-
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
-// import BoardUser from "./components/BoardUser/BoardUser";
-// import BoardModerator from "./components/BoardModerator/BoardModerator";
-// import BoardAdmin from "./components/BoardAdmin/BoardAdmin";
+import BoardUser from "./components/BoardUser/BoardUser";
+import BoardModerator from "./components/BoardModerator/BoardModerator";
+import BoardAdmin from "./components/BoardAdmin/BoardAdmin";
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -127,9 +125,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/profile" component={Profile} />
-              {/* <Route path="/user" component={BoardUser} />
+              <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
-              <Route path="/admin" component={BoardAdmin} /> */}
+              <Route path="/admin" component={BoardAdmin} />
             </Switch>
           </div>
         </div>
