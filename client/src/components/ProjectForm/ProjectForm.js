@@ -2,19 +2,6 @@ import React, {Component} from 'react';
 
 import axios from 'axios';
 
-// handleSubmit = event => {
-//   event.preventDefault();
-//   const user = {
-//     name: this.state.name
-//   }
-//   axios.post('https://jsonplaceholder.typicode.com/users', { user })
-//     .then(res=>{
-//       console.log(res);
-//       console.log(res.data);
-//       window.location = "/retrieve" //This line of code will redirect you once the submission is succeed
-//     })
-// }
-
 export default class ProjectForm extends Component {
     constructor(props) {
       super(props);

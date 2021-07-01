@@ -6,11 +6,12 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
-import BoardUser from "./components/BoardUser/BoardUser";
-import BoardModerator from "./components/BoardModerator/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin/BoardAdmin";
+import BoardUser from "./components/BoardUser/BoardUser"
+import BoardModerator from "./components/BoardModerator/BoardModerator"
+import BoardAdmin from "./components/BoardAdmin/BoardAdmin"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import ProjectList from './components/ProjectList/ProjectList'
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -69,6 +70,7 @@ class App extends Component {
               {currentUser && (
                 <Nav.Link as={Link} to='/user'>User</Nav.Link>
               )}
+              <Nav.Link as={Link} to='/projects'>Projects</Nav.Link>
             </Nav>
             {currentUser ? (
               <Nav>
@@ -90,6 +92,7 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/profile" component={Profile} />
+              <Route path='/projects' component={ProjectList} />
               <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} />
