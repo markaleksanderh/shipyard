@@ -60,7 +60,15 @@ class App extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              {showModeratorBoard && (
+                <Nav.Link as={Link} to='/mod'>Moderator</Nav.Link>
+              )}
+              {showAdminBoard && (
+                <Nav.Link as={Link} to='/admin'>Admin</Nav.Link>
+              )}
+              {currentUser && (
+                <Nav.Link as={Link} to='/user'>User</Nav.Link>
+              )}
             </Nav>
             {currentUser ? (
               <Nav>
