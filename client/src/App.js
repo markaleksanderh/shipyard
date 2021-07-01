@@ -9,6 +9,8 @@ import Profile from "./components/Profile/Profile";
 import BoardUser from "./components/BoardUser/BoardUser";
 import BoardModerator from "./components/BoardModerator/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin/BoardAdmin";
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -52,73 +54,28 @@ class App extends Component {
 
     return (
       <Router history={history}>
-        <div>
-          <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <Link to={"/"} className="navbar-brand">
-              App
-            </Link>
-            <div className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to={"/home"} className="nav-link">
-                  Home
-                </Link>
-              </li>
-
-              {showModeratorBoard && (
-                <li className="nav-item">
-                  <Link to={"/mod"} className="nav-link">
-                    Moderator Board
-                  </Link>
-                </li>
-              )}
-
-              {showAdminBoard && (
-                <li className="nav-item">
-                  <Link to={"/admin"} className="nav-link">
-                    Admin Board
-                  </Link>
-                </li>
-              )}
-
-              {currentUser && (
-                <li className="nav-item">
-                  <Link to={"/user"} className="nav-link">
-                    User
-                  </Link>
-                </li>
-              )}
-            </div>
-
+        <Navbar bg='light' expand='lg'>
+          <Navbar.Brand>App</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+            </Nav>
             {currentUser ? (
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to={"/profile"} className="nav-link">
-                    {currentUser.username}
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={this.logOut}>
-                    LogOut
-                  </a>
-                </li>
-              </div>
+              <Nav>
+                <Nav.Link as={Link} to='/profile'>{currentUser.username}</Nav.Link>
+                <Nav.Link as={Link} to="/login" onClick={this.logOut}>Log out</Nav.Link>
+              </Nav>
             ) : (
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to={"/login"} className="nav-link">
-                    Login
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link to={"/register"} className="nav-link">
-                    Sign Up
-                  </Link>
-                </li>
-              </div>
+              <Nav>
+                <Nav.Link as={Link} to='/login'>Log in</Nav.Link>
+                <Nav.Link as={Link} to="/register">Sign up</Nav.Link>
+              </Nav>
             )}
-          </nav>
-
+          </Navbar.Collapse>
+        </Navbar>
+        <div>
           <div className="container mt-3">
             <Switch>
               <Route exact path={["/", "/home"]} component={Home} />
